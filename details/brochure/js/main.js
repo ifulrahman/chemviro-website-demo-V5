@@ -118,3 +118,86 @@
     
 })(jQuery);
 
+
+// -------------------- DOWNLOAD BROSUR ------------------
+let currentDownloadLink = '';
+let formSubmitted = false; // Flag untuk melacak pengiriman form
+
+document.querySelectorAll('.btn-light').forEach(btn => {
+  btn.addEventListener('click', function(event) {
+    event.preventDefault();
+    currentDownloadLink = this.href; // Simpan tautan unduhan
+    formSubmitted = false; // Reset flag setiap kali modal dibuka
+    openModal();
+  });
+});
+
+function openModal() {
+  document.getElementById('emailModal').style.display = 'block';
+  const submitButton = document.querySelector('#submitButton');
+  const emailInput = document.getElementById('emailInput');
+
+  // Tambahkan event listener untuk mengaktifkan tombol submit hanya jika input valid
+  emailInput.addEventListener('input', function () {
+    if (emailInput.value.trim() !== '') {
+      submitButton.disabled = false; // Aktifkan tombol
+    } else {
+      submitButton.disabled = true; // Nonaktifkan tombol
+    }
+  });
+}
+
+function closeModal() {
+  document.getElementById('emailModal').style.display = 'none';
+  // Jangan unduh jika form belum dikirim
+  if (formSubmitted && currentDownloadLink) {
+    // Beri jeda 3 detik sebelum mengunduh file
+    setTimeout(() => {
+      window.location.href = currentDownloadLink;
+      currentDownloadLink = ''; // Reset tautan setelah unduhan
+    }, 1500);
+  }
+}
+
+function submitEmail() {
+  const emailInput = document.getElementById('emailInput').value;
+  if (emailInput) {
+    // Kirim data email ke Google Apps Script Web App
+    fetch('https://script.google.com/macros/s/AKfycbyeSzz_h9DCD29E2QRxrEMWRS2CYlW0B4rQ3BpPO2yuNGqIb6etfHG06Nf54Wf47sU/exec', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      mode: 'no-cors',
+      body: JSON.stringify({ email: emailInput })
+    })
+    .then(() => {
+      showNotification('Email telah disimpan.');
+      formSubmitted = true; // Set flag untuk menunjukkan bahwa form telah dikirim
+      closeModal(); // Tutup modal setelah pengiriman
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      showNotification('Terjadi kesalahan, mohon coba lagi.', true);
+    });
+  } else {
+    showNotification('Mohon masukkan email yang valid.', true);
+  }
+}
+
+function showNotification(message, isError = false) {
+  const notification = document.getElementById('notification');
+  notification.textContent = message;
+  notification.className = 'notification visible';
+  if (isError) {
+    notification.classList.add('error');
+  }
+
+  // Tampilkan notifikasi selama 3 detik, lalu sembunyikan
+  setTimeout(() => {
+    notification.className = 'notification hidden';
+  }, 1500);
+}
+
+
+

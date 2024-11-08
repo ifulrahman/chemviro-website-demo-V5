@@ -701,3 +701,80 @@ h6,
     color: #B0B9AE;
     border-top: 1px solid rgba(255, 255, 255, .1);
 }
+
+
+
+/* ----------------- CSS UNTUK MODAL DOWNLOAD BROSUR ---------------------- */
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .modal-dialog {
+    margin: 10% auto;
+    width: 80%;
+    max-width: 400px;
+  }
+  
+  .modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  .modal-header, .modal-body, .modal-footer {
+    margin-bottom: 15px;
+  }
+  
+  .close {
+    float: right;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  
+  input[type="email"] {
+    width: 100%;
+    padding: 8px;
+    margin: 8px 0;
+    box-sizing: border-box;
+  }
+  
+
+  /* ------------------ UNTUK NOTIF DOWNLOAD BROSUR ----------------*/
+  .notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    background-color: #029848; /* Warna hijau untuk sukses */
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 1000;
+  }
+  
+  .notification.error {
+    background-color: #dc3545; /* Warna merah untuk error */
+  }
+  
+  .notification.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
