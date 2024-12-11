@@ -367,7 +367,7 @@ h6,
 .service-item {
     position: relative;
     margin: 65px 0 25px 0;
-    box-shadow: 0 0 45px rgba(0, 0, 0, .07);
+    /* box-shadow: 0 0 45px rgba(0, 0, 0, .07); */
 }
 
 .service-item .service-img {
@@ -716,6 +716,7 @@ h6,
     height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999999;
   }
   
   .modal-dialog {
