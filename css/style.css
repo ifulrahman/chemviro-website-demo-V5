@@ -9773,3 +9773,16 @@ a.text-dark:hover, a.text-dark:focus {
   100% { transform: translateX(0%); }
   }
 
+/* PERKECIL LOGO BERJALAN */
+  .vendor-carousel img {
+    width: 90px;  
+    height: auto;  
+    max-height: 95px; 
+    object-fit: contain; 
+    display: block;
+    margin: auto;
+}
+
+.marquee-content img {
+    max-height: 80px;
+}
