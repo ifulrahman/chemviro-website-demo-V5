@@ -24,6 +24,137 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
 
+    <!-- Custom Accordion Styles -->
+    <style>
+        .accordion-chemconst {
+            margin-top: 20px;
+        }
+
+        .accordion-chemconst .accordion-item {
+            border: 1px solid #e0e0e0;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .accordion-chemconst .accordion-header {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .accordion-chemconst .accordion-header:hover {
+            background: #e9ecef;
+        }
+
+        .accordion-chemconst .accordion-item.active .accordion-header {
+            background: #00a650;
+            color: white;
+        }
+
+        .accordion-chemconst .accordion-title {
+            font-size: 1em;
+            font-weight: 600;
+            color: #696868;
+            margin: 0;
+        }
+
+        .accordion-chemconst .accordion-item.active .accordion-title {
+            color: white;
+        }
+
+        .accordion-chemconst .accordion-icon {
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
+            color: #00a650;
+        }
+
+        .accordion-chemconst .accordion-item.active .accordion-icon {
+            transform: rotate(180deg);
+            color: white;
+        }
+
+        .accordion-chemconst .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .accordion-chemconst .accordion-item.active .accordion-content {
+            max-height: 1000px;
+        }
+
+        .accordion-chemconst .accordion-body {
+            padding: 20px;
+            background: #fafafa;
+            color: #555;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .accordion-chemconst .accordion-body ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .accordion-chemconst .accordion-body li {
+            margin: 8px 0;
+        }
+
+        .accordion-chemconst .accordion-body strong {
+            color: #00a650;
+        }
+
+        .expert-section-chemconst {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #00a650;
+        }
+
+        .expert-title-chemconst {
+            color: #00a650;
+            font-size: 1.5em;
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .expert-grid-chemconst {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .expert-item-chemconst {
+            background: #f8f9fa;
+            padding: 18px;
+            border-radius: 6px;
+            text-align: center;
+            border-left: 3px solid #00a650;
+            font-size: 0.9em;
+            color: #696868;
+            transition: all 0.3s ease;
+        }
+
+        .expert-item-chemconst:hover {
+            background: #e9ecef;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        @media (max-width: 768px) {
+            .expert-grid-chemconst {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
   </head>
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
   
@@ -143,6 +274,8 @@
           <div class="col-lg-6 mb-5" data-aos="fade-up" data-aos-delay="">
 
             <div class="owl-carousel slide-one-item-alt">
+              <img src="images/gas-rumah-kaca.jpg" alt="Image" class="img-fluid">
+              <img src="images/audit-lingkungan.png" alt="Image" class="img-fluid">
               <img src="images/service-1.jpg" alt="Image" class="img-fluid">
               <img src="images/service-2.jpg" alt="Image" class="img-fluid">
               <img src="images/service-3.jpg" alt="Image" class="img-fluid">
@@ -162,46 +295,61 @@
             
             <div class="owl-carousel slide-one-item-alt-text">
               <div>
-                <h2 class="section-title mb-3">1. Health Risk Assessment (HRA)</h2>
-                <p>Membantu penyusunan dokument Health Risk Assessment
-                  (HRA) guna mengidentifikasikan bahaya kesehatan kerja yang ada di perusahaan
-                  (permenaker 05 tahun 2018)
+                <h2 class="section-title mb-3">1. Gas Rumah Kaca (GRK)</h2>
+                <p>Menyediakan layanan perhitungan dan pelaporan emisi Gas Rumah Kaca meliputi:
+                  Perhitungan Gas Rumah Kaca, Penyusunan DRAM (Dokumen Rencana Aksi Mitigasi),
+                  Nilai Ekonomi Karbon (NEK/Carbon Footprint), sertifikasi ISCC dan ISO 14064 Series
+                  untuk inventarisasi karbon tingkat organisasi dan proyek.
                 </p>
               </div>
               <div>
-                <h2 class="section-title mb-3">2. Assessment Ergonomic</h2>
+                <h2 class="section-title mb-3">2. Audit Lingkungan Hidup</h2>
+                <p>Membantu perusahaan melakukan audit lingkungan hidup sesuai Peraturan Menteri
+                  Lingkungan Hidup No. 03 Tahun 2013, dengan didukung oleh Auditor Utama Lingkungan
+                  Hidup bersertifikat untuk memastikan kepatuhan terhadap regulasi lingkungan.
+                </p>
+              </div>
+              <div>
+                <h2 class="section-title mb-3">3. Health Risk Assessment (HRA)</h2>
+                <p>Membantu penyusunan dokumen Health Risk Assessment (HRA) untuk
+                  mengidentifikasi bahaya kesehatan kerja di perusahaan sesuai
+                  Permenaker 05 Tahun 2018.
+                </p>
+              </div>
+              <div>
+                <h2 class="section-title mb-3">4. Assessment Ergonomic</h2>
                 <p>Membantu perusahaan melakukan penilaian postur kerja
                   di tempat kerja (permenaker 05 tahun 2018)
                 </p>
               </div>
               <div>
-                <h2 class="section-title mb-3">3. Assessment Psychosocial</h2>
+                <h2 class="section-title mb-3">5. Assessment Psychosocial</h2>
                 <p>Membantu perusahaan melakukan penilaian bahaya kesehatan kerja
                   yang disebabkan faktor psikologi karyawan, terutama perusahaan
                   yang area kerjanya di tempat terbatas (permenaker 05 tahun 2018)
                 </p>
               </div>
               <div>
-                <h2 class="section-title mb-3">4. Audit Sistem K3</h2>
+                <h2 class="section-title mb-3">6. Audit Sistem K3</h2>
                 <p>Membantu perusahaan membangun system kesehatan dan keselatan kerja (K3)
                   dan dokumen safety lainnya (CHSEM) (PP No. 50 Tahun 2012)
                 </p>
               </div>
               <div>
-                <h2 class="section-title mb-3">5. Audit Proper</h2>
+                <h2 class="section-title mb-3">7. Audit Proper</h2>
                 <p>Membantu perusahaan yang ikut dalam program proper yang diselenggarakan
                   pemerintah dalam hal membangun sistem proper dan implementasinya.
                 </p>
               </div>
               <div>
-                <h2 class="section-title mb-3">6. Konsultan ISO 17025</h2>
+                <h2 class="section-title mb-3">8. Konsultan ISO 17025</h2>
                 <p>Membantu perusahaan khususnya yang bergerak dalam bidang jasa
                   atau mempunyai laboratorium guna membangun sistem dan implementasi sampai
                   mendapatkan sertifikat akreditasi ISO 17025 - Manajemen Laboratorium.
                 </p>
               </div>
               <div>
-                <h2 class="section-title mb-3">7. Training/ Pelatihan</h2>
+                <h2 class="section-title mb-3">9. Training/ Pelatihan</h2>
                 <p>Membantu perusahaan yang membutuhkan jasa training khususnya di bidang
                   industrial hygiene (HIMU) dan sertifikasi ahli K3 lingkungan kerja (AK3 Lingker)
                 </p>
@@ -213,6 +361,215 @@
         </div>
       </div>
     </section>
+
+
+    <!-- SECTION DETAIL LAYANAN ACCORDION -->
+    <section class="site-section bg-light" id="detail-layanan-section">
+      <div class="container">
+        <div class="row mb-5 justify-content-center">
+          <div class="col-md-8 text-center">
+            <h2 class="section-title mb-3" data-aos="fade-up">Detail Layanan Lengkap</h2>
+            <p class="lead" data-aos="fade-up" data-aos-delay="100">Klik untuk melihat detail dari setiap layanan kami</p>
+          </div>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-10">
+            <div class="accordion-chemconst" data-aos="fade-up" data-aos-delay="100">
+              
+              <!-- Item -->
+              <div class="accordion-item">
+                <div class="accordion-header">
+                  <h3 class="accordion-title">1. Gas Rumah Kaca (GRK), Karbon, dan Energi</h3>
+                  <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                  <div class="accordion-body">
+                    <strong>📋 Dasar Peraturan:</strong>
+                    <ul>
+                      <li>Peraturan Presiden No. 98 Tahun 2021 Tentang Penyelenggaraan Nilai Ekonomi Karbon</li>
+                      <li>Permen LHK No. 21 Tahun 2022 Tentang Penyelenggaraan Nilai Ekonomi Karbon</li>
+                      <li>Permen LHK No. P.73/MENLHK/SETJEN/KUM.1/12/2017 Tentang Pedoman Penyelenggaraan Dan Pelaporan Inventarisasi Gas Rumah Kaca Nasional</li>
+                    </ul>
+                    <br>
+                    <strong>Layanan meliputi:</strong>
+                    <ul>
+                      <li><strong>Nilai Ekonomi Karbon (Carbon Footprint)</strong> - adalah pemberian harga pada setiap unit emisi gas rumah kaca (GRK) yang dihasilkan dari kegiatan manusia dan ekonomi.</li>
+                      <li><strong>International Sustainability and Carbon Certification (ISCC)</strong> - adalah sistem sertifikasi untuk memastikan keberlanjutan, ketertelusuran, dan pengurangan emisi gas rumah kaca untuk berbagai jenis bahan baku dan produk.</li>
+                      <li><strong>ISO 14064 Emisi Gas Rumah Kaca (Carbon Inventory)</strong> - adalah kerangka kerja untuk kuantifikasi, pelaporan, dan verifikasi emisi gas rumah kaca (GRK):
+                        <ul style="margin-top: 8px;">
+                          <li>ISO 14064-1:2018 untuk tingkat organisasi</li>
+                          <li>ISO 14064-2:2019 untuk proyek</li>
+                          <li>ISO 14064-3:2019 untuk validasi dan verifikasi emisi GRK oleh pihak ketiga</li>
+                        </ul>
+                      </li>
+                      <li><strong>Dokumen Rencana Aksi Mitigasi (DRAM)</strong> - adalah merancang, mendokumentasikan, dan memvalidasi upaya penurunan emisi gas rumah kaca (GRK).</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Item -->
+              <div class="accordion-item">
+                <div class="accordion-header">
+                  <h3 class="accordion-title">2. Audit Lingkungan Hidup</h3>
+                  <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                  <div class="accordion-body">
+                    <strong>📋 Dasar Peraturan:</strong>
+                    <ul>
+                      <li>Peraturan Menteri Lingkungan Hidup No. 03 Tahun 2013 Tentang Audit Lingkungan Hidup</li>
+                    </ul>
+                    <br>
+                    <p>Membantu perusahaan melakukan audit lingkungan hidup sesuai Peraturan Menteri Lingkungan Hidup No. 03 Tahun 2013, dengan didukung oleh tenaga ahli profesional, berpengalaman, dan bersertifikat sebagai
+                      <strong>
+                        Auditor Energi Bangunan Gedung,
+                        Auditor Energi Termal & Mekanikal,
+                        Auditor Utama Lingkungan HIdup,
+                        Manajerial Energi Industri,
+                        Manajerial Energi Bangunan Gedung
+                      </strong>
+                        untuk memastikan kepatuhan terhadap regulasi lingkungan, evaluasi ketaataan, dan perbaikan sistem manajemen lingkungan.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Item -->
+              <div class="accordion-item">
+                <div class="accordion-header">
+                  <h3 class="accordion-title">3. Health Risk Assessment (HRA)</h3>
+                  <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                  <div class="accordion-body">
+                    <strong>📋 Dasar Peraturan:</strong>
+                    <ul>
+                      <li>Permenaker No. 05 Tahun 2018 Tentang Keselamatan dan Kesehatan Kerja Lingkungan Kerja</li>
+                    </ul>
+                    <br>
+                    <p>Membantu penyusunan dokumen Health Risk Assessment (HRA) guna mengidentifikasi bahaya kesehatan kerja yang ada di perusahaan sesuai dengan permenaker 05 tahun 2018.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Item -->
+              <div class="accordion-item">
+                <div class="accordion-header">
+                  <h3 class="accordion-title">4. Assessment Ergonomic</h3>
+                  <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                  <div class="accordion-body">
+                    <strong>📋 Dasar Peraturan:</strong>
+                    <ul>
+                      <li>Permenaker No. 05 Tahun 2018 Tentang Keselamatan dan Kesehatan Kerja Lingkungan Kerja</li>
+                    </ul>
+                    <br>
+                    <p>Membantu perusahaan melakukan penilaian postur kerja di tempat kerja (permenaker 05 tahun 2018).</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Item -->
+              <div class="accordion-item">
+                <div class="accordion-header">
+                  <h3 class="accordion-title">5. Assessment Psychosocial</h3>
+                  <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                  <div class="accordion-body">
+                    <strong>📋 Dasar Peraturan:</strong>
+                    <ul>
+                      <li>Permenaker No. 05 Tahun 2018 Tentang Keselamatan dan Kesehatan Kerja Lingkungan Kerja</li>
+                    </ul>
+                    <br>
+                    <p>Membantu perusahaan melakukan penilaian bahaya kesehatan kerja yang disebabkan faktor psikologi karyawan, terutama perusahaan yang area kerjanya di tempat terbatas (permenaker 05 tahun 2018).</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Item -->
+              <div class="accordion-item">
+                <div class="accordion-header">
+                  <h3 class="accordion-title">6. Audit Sistem K3</h3>
+                  <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                  <div class="accordion-body">
+                    <strong>📋 Dasar Peraturan:</strong>
+                    <ul>
+                      <li>PP No. 50 Tahun 2012 Tentang Penerapan Sistem Manajemen Keselamatan dan Kesehatan Kerja</li>
+                    </ul>
+                    <br>
+                    <p>Membantu perusahaan membangun system kesehatan dan keselatan kerja (K3) dan dokumen safety lainnya (CHSEM) (PP No. 50 Tahun 2012).</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Item -->
+              <div class="accordion-item">
+                <div class="accordion-header">
+                  <h3 class="accordion-title">7. Audit PROPER</h3>
+                  <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                  <div class="accordion-body">
+                    <p>Membantu perusahaan yang ikut dalam program proper yang diselenggarakan pemerintah dalam hal membangun sistem proper dan implementasinya.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Item -->
+              <div class="accordion-item">
+                <div class="accordion-header">
+                  <h3 class="accordion-title">8. Konsultan ISO 17025</h3>
+                  <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                  <div class="accordion-body">
+                    <strong>📋 Standar:</strong>
+                    <ul>
+                      <li>ISO/IEC 17025:2017 - General Requirements for the Competence of Testing and Calibration Laboratories</li>
+                    </ul>
+                    <br>
+                    <p>Membantu perusahaan khususnya yang bergerak dalam bidang jasa atau mempunyai laboratorium guna membangun sistem dan implementasi sampai mendapatkan sertifikat akreditasi ISO 17025 - Manajemen Laboratorium.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Item -->
+              <div class="accordion-item">
+                <div class="accordion-header">
+                  <h3 class="accordion-title">9. Training & Pelatihan</h3>
+                  <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                  <div class="accordion-body">
+                    <p>Membantu perusahaan yang membutuhkan jasa training khususnya di bidang industrial hygiene (HIMU) dan sertifikasi ahli K3 lingkungan kerja (AK3 Lingker).</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Expert Section -->
+            <div class="expert-section-chemconst" data-aos="fade-up" data-aos-delay="200">
+              <h3 class="expert-title-chemconst">Tim Tenaga Ahli Profesional, Berpengalaman, dan Bersertifikat</h3>
+              <div class="expert-grid-chemconst">
+                <div class="expert-item-chemconst">✓ Auditor Energi Bangunan Gedung</div>
+                <div class="expert-item-chemconst">✓ Auditor Energi Termal & Mekanikal</div>
+                <div class="expert-item-chemconst">✓ Auditor Utama Lingkungan Hidup</div>
+                <div class="expert-item-chemconst">✓ Manajerial Energi Industri</div>
+                <div class="expert-item-chemconst">✓ Manajerial Energi Bangunan Gedung</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- END SECTION DETAIL LAYANAN ACCORDION -->
 
 
     <section class="site-section" id="gallery-section" data-aos="fade">
@@ -229,63 +586,63 @@
           <div class="item web col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
             <a href="images/img_2.jpg" class="item-wrap fancybox" data-fancybox="gallery2">
               <span class="icon-search2"></span>
-              <img class="img-fluid" src="images/img_2.jpg">
+              <img class="img-fluid" src="images/img_2.jpg" onload="if(typeof $.fn.isotope !== 'undefined') { $('#posts').isotope('layout'); }">
             </a>
           </div>
 
           <div class="item brand col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
             <a href="images/img_4.jpg" class="item-wrap fancybox" data-fancybox="gallery2">
               <span class="icon-search2"></span>
-              <img class="img-fluid" src="images/img_4.jpg">
+              <img class="img-fluid" src="images/img_4.jpg" onload="if(typeof $.fn.isotope !== 'undefined') { $('#posts').isotope('layout'); }">
             </a>
           </div>
 
           <div class="item brand col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
             <a href="images/img-chemconst (1).jpg" class="item-wrap fancybox" data-fancybox="gallery2">
               <span class="icon-search2"></span>
-              <img class="img-fluid" src="images/img-chemconst (1).jpg">
+              <img class="img-fluid" src="images/img-chemconst (1).jpg" onload="if(typeof $.fn.isotope !== 'undefined') { $('#posts').isotope('layout'); }">
             </a>
           </div>
 
           <div class="item brand col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
             <a href="images/img-chemconst (2).jpg" class="item-wrap fancybox" data-fancybox="gallery2">
               <span class="icon-search2"></span>
-              <img class="img-fluid" src="images/img-chemconst (2).jpg">
+              <img class="img-fluid" src="images/img-chemconst (2).jpg" onload="if(typeof $.fn.isotope !== 'undefined') { $('#posts').isotope('layout'); }">
             </a>
           </div>
 
           <div class="item brand col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
             <a href="images/img-chemconst (3).jpg" class="item-wrap fancybox" data-fancybox="gallery2">
               <span class="icon-search2"></span>
-              <img class="img-fluid" src="images/img-chemconst (3).jpg">
+              <img class="img-fluid" src="images/img-chemconst (3).jpg" onload="if(typeof $.fn.isotope !== 'undefined') { $('#posts').isotope('layout'); }">
             </a>
           </div>
 
           <div class="item brand col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
             <a href="images/img-chemconst (5).jpg" class="item-wrap fancybox" data-fancybox="gallery2">
               <span class="icon-search2"></span>
-              <img class="img-fluid" src="images/img-chemconst (5).jpg">
+              <img class="img-fluid" src="images/img-chemconst (5).jpg" onload="if(typeof $.fn.isotope !== 'undefined') { $('#posts').isotope('layout'); }">
             </a>
           </div>
 
           <div class="item brand col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
             <a href="images/img-chemconst (6).jpg" class="item-wrap fancybox" data-fancybox="gallery2">
               <span class="icon-search2"></span>
-              <img class="img-fluid" src="images/img-chemconst (6).jpg">
+              <img class="img-fluid" src="images/img-chemconst (6).jpg" onload="if(typeof $.fn.isotope !== 'undefined') { $('#posts').isotope('layout'); }">
             </a>
           </div>
 
           <div class="item brand col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
             <a href="images/img-chemconst (9).jpg" class="item-wrap fancybox" data-fancybox="gallery2">
               <span class="icon-search2"></span>
-              <img class="img-fluid" src="images/img-chemconst (9).jpg">
+              <img class="img-fluid" src="images/img-chemconst (9).jpg" onload="if(typeof $.fn.isotope !== 'undefined') { $('#posts').isotope('layout'); }">
             </a>
           </div>
           
           <div class="item brand col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
             <a href="images/img-chemconst (10).jpg" class="item-wrap fancybox" data-fancybox="gallery2">
               <span class="icon-search2"></span>
-              <img class="img-fluid" src="images/img-chemconst (10).jpg">
+              <img class="img-fluid" src="images/img-chemconst (10).jpg" onload="if(typeof $.fn.isotope !== 'undefined') { $('#posts').isotope('layout'); }">
             </a>
           </div>
           
@@ -293,21 +650,21 @@
           <div class="item brand col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
             <a href="images/img-chemconst (12).jpg" class="item-wrap fancybox" data-fancybox="gallery2">
               <span class="icon-search2"></span>
-              <img class="img-fluid" src="images/img-chemconst (12).jpg">
+              <img class="img-fluid" src="images/img-chemconst (12).jpg" onload="if(typeof $.fn.isotope !== 'undefined') { $('#posts').isotope('layout'); }">
             </a>
           </div>
 
           <div class="item brand col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
             <a href="images/img-chemconst (15).jpg" class="item-wrap fancybox" data-fancybox="gallery2">
               <span class="icon-search2"></span>
-              <img class="img-fluid" src="images/img-chemconst (15).jpg">
+              <img class="img-fluid" src="images/img-chemconst (15).jpg" onload="if(typeof $.fn.isotope !== 'undefined') { $('#posts').isotope('layout'); }">
             </a>
           </div>
 
           <div class="item brand col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
             <a href="images/img-chemconst (19).jpg" class="item-wrap fancybox" data-fancybox="gallery2">
               <span class="icon-search2"></span>
-              <img class="img-fluid" src="images/img-chemconst (19).jpg">
+              <img class="img-fluid" src="images/img-chemconst (19).jpg" onload="if(typeof $.fn.isotope !== 'undefined') { $('#posts').isotope('layout'); }">
             </a>
           </div>
 
@@ -406,6 +763,26 @@
   
   <script src="js/main.js"></script>
 
+  <!-- Accordion Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const accordionItems = document.querySelectorAll('.accordion-chemconst .accordion-item');
+
+      accordionItems.forEach(item => {
+        const header = item.querySelector('.accordion-header');
+        
+        header.addEventListener('click', function() {
+          const isActive = item.classList.contains('active');
+          
+          accordionItems.forEach(i => i.classList.remove('active'));
+          
+          if (!isActive) {
+            item.classList.add('active');
+          }
+        });
+      });
+    });
+  </script>
   
   </body>
 </html>
