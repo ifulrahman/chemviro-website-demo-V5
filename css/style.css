@@ -10425,3 +10425,36 @@ body.modal-open .modal-backdrop {
     }
 }
 /* ---------------- END OF ANNOUNCEMENT STYLES ----------------- */
+
+
+/* ------------------- Certificate Carousel Styles ----------------- */
+.certificate-img {
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        cursor: pointer;
+    }
+
+    .certificate-img:hover {
+        transform: scale(1.03);
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+
+    #certificateCarousel .carousel-control-prev,
+    #certificateCarousel .carousel-control-next {
+        width: -10%;
+    }
+
+    #certificateCarousel .carousel-indicators {
+        bottom: -30px;
+    }
+
+    #certificateCarousel .carousel-indicators li {
+        background-color: grey;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+    }
+
+    #certificateCarousel .carousel-indicators .active {
+        background-color: green;
+    }
+/* ------------------- END Certificate Carousel Styles ----------------- */
