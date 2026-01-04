@@ -9890,3 +9890,538 @@ a.text-dark:hover, a.text-dark:focus {
     }
 }
 /* --------------- end of custom CSS for WhatsApp Floating Button ---------------*/
+
+/* --------------- ANNOUNCEMENT POP-UP SECTION STYLES --------------- */
+.announcement-section {
+    position: relative;
+    z-index: 10;
+}
+
+.announcement-card {
+    background: linear-gradient(135deg, #0d9488 0%, #059669 100%);
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 8px 25px rgba(5, 150, 105, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border-left: 5px solid #10b981;
+}
+
+.announcement-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+    animation: announcementPulse 4s ease-in-out infinite;
+}
+
+@keyframes announcementPulse {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+.announcement-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(5, 150, 105, 0.3);
+    border-left-width: 8px;
+}
+
+.announcement-logo {
+    width: 90px;
+    height: auto;
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.announcement-content {
+    color: white;
+    position: relative;
+    z-index: 1;
+}
+
+.announcement-title {
+    font-weight: 700;
+    font-size: 1.35rem;
+    color: white;
+    line-height: 1.4;
+}
+
+.announcement-text {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.announcement-date {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+}
+
+.announcement-card .badge-success {
+    background-color: #22c55e;
+    font-size: 0.7rem;
+    padding: 6px 14px;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    border-radius: 20px;
+}
+
+.btn-view-detail {
+    background: white;
+    color: #059669;
+    border: 2px solid white;
+    padding: 12px 28px;
+    border-radius: 25px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+.btn-view-detail:hover {
+    background: #059669;
+    color: white;
+    border-color: white;
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+#announcementModal {
+    z-index: 1050;
+}
+
+/* Blur background website saat modal muncul */
+body.modal-open > *:not(.modal):not(.modal-backdrop):not(script) {
+    filter: blur(3px);
+    -webkit-filter: blur(3px);
+    transition: filter 0.3s ease;
+}
+
+body.modal-open .modal,
+body.modal-open .modal *,
+body.modal-open .modal-backdrop {
+    filter: none !important;
+    -webkit-filter: none !important;
+}
+
+#announcementModal .modal-header {
+    background: linear-gradient(135deg, #0d9488 0%, #059669 100%);
+    border-bottom: none;
+    padding: 25px 30px;
+    text-align: center;
+    position: relative;
+}
+
+#announcementModal .modal-content {
+    border-radius: 12px;
+    overflow: hidden;
+    border: none;
+}
+
+#announcementModal .modal-body img {
+    border-bottom: 3px solid #f0f0f0;
+}
+
+#announcementModal .modal-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #ffffff;
+    text-transform: none;
+    letter-spacing: 0.3px;
+    margin: 0 auto;
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+}
+
+#announcementModal .modal-header .close {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0;
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 300;
+    line-height: 1;
+    color: #ffffff;
+    opacity: 0.8;
+    text-shadow: none;
+}
+
+#announcementModal .modal-header .close:hover {
+    opacity: 1;
+    color: #ffffff;
+}
+
+#klhkImageCarousel .carousel-inner {
+    background-color: #fff;
+}
+
+#klhkImageCarousel .carousel-item {
+    height: auto;
+}
+
+#klhkImageCarousel .carousel-item img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    max-height: none;
+    display: block;
+}
+
+#klhkImageCarousel .carousel-indicators {
+    bottom: 15px;
+    z-index: 15;
+}
+
+#klhkImageCarousel .carousel-indicators li {
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 2px solid #059669;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin: 0 5px;
+    opacity: 0.6;
+}
+
+#klhkImageCarousel .carousel-indicators .active {
+    background-color: #059669;
+    opacity: 1;
+    border-color: #059669;
+}
+
+/* Simple Arrow Style */
+#klhkImageCarousel .carousel-control-prev,
+#klhkImageCarousel .carousel-control-next {
+    width: 50px;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+#klhkImageCarousel .carousel-control-prev:hover,
+#klhkImageCarousel .carousel-control-next:hover {
+    opacity: 1;
+}
+
+#klhkImageCarousel .carousel-control-prev-icon,
+#klhkImageCarousel .carousel-control-next-icon {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 3px;
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+#klhkImageCarousel .carousel-control-prev-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23059669' viewBox='0 0 8 8'%3e%3cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3e%3c/svg%3e");
+}
+
+#klhkImageCarousel .carousel-control-next-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23059669' viewBox='0 0 8 8'%3e%3cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3e%3c/svg%3e");
+}
+
+/* Remove caption overlay */
+#klhkImageCarousel .carousel-caption {
+    display: none;
+}
+
+#announcementModal .alert-info {
+    background-color: #d1fae5;
+    border-color: #10b981;
+    color: #065f46;
+    border-left: 4px solid #10b981;
+}
+
+#announcementModal .text-success {
+    color: #059669 !important;
+}
+
+/* ============== RESPONSIVE STYLES ============== */
+
+/* Extra Small Devices (Portrait Phones, 320px - 575px) */
+@media (max-width: 575px) {
+    .announcement-section {
+        padding-top: 15px !important;
+        padding-bottom: 15px !important;
+    }
+
+    .announcement-card {
+        padding: 20px 15px;
+        border-left-width: 3px;
+    }
+
+    .announcement-logo {
+        width: 60px;
+        margin-bottom: 15px;
+        padding: 8px;
+    }
+
+    .announcement-title {
+        font-size: 0.95rem;
+        line-height: 1.3;
+    }
+
+    .announcement-text {
+        font-size: 0.8rem;
+        line-height: 1.5;
+        margin-bottom: 8px !important;
+    }
+
+    .announcement-date {
+        font-size: 0.7rem;
+        line-height: 1.4;
+    }
+
+    .announcement-card .badge-success {
+        font-size: 0.65rem;
+        padding: 4px 10px;
+    }
+
+    .btn-view-detail {
+        padding: 10px 20px;
+        font-size: 0.75rem;
+        width: 100%;
+        margin-top: 15px;
+        border-radius: 20px;
+    }
+
+    /* Modal Styles for Small Screens */
+    #announcementModal .modal-dialog {
+        margin: 10px;
+    }
+
+    #announcementModal .modal-title {
+        font-size: 0.8rem;
+        line-height: 1.3;
+        padding-right: 30px;
+    }
+
+    #announcementModal .modal-header {
+        padding: 15px 10px;
+    }
+
+    #announcementModal .modal-header .close {
+        right: 10px;
+        font-size: 1.4rem;
+    }
+
+    #announcementModal .modal-body {
+        padding: 15px 10px;
+    }
+
+    /* Carousel for Small Screens */
+    #klhkImageCarousel .carousel-control-prev,
+    #klhkImageCarousel .carousel-control-next {
+        width: 35px;
+    }
+
+    #klhkImageCarousel .carousel-control-prev-icon,
+    #klhkImageCarousel .carousel-control-next-icon {
+        width: 25px;
+        height: 25px;
+        background-size: 70%;
+    }
+
+    #klhkImageCarousel .carousel-indicators {
+        bottom: 8px;
+    }
+
+    #klhkImageCarousel .carousel-indicators li {
+        width: 8px;
+        height: 8px;
+        margin: 0 3px;
+    }
+}
+
+/* Small Devices (Landscape Phones, 576px - 767px) */
+@media (min-width: 576px) and (max-width: 767px) {
+    .announcement-card {
+        padding: 25px 20px;
+    }
+
+    .announcement-logo {
+        width: 70px;
+        margin-bottom: 15px;
+    }
+
+    .announcement-title {
+        font-size: 1.05rem;
+    }
+
+    .announcement-text {
+        font-size: 0.85rem;
+    }
+
+    .announcement-date {
+        font-size: 0.75rem;
+    }
+
+    .btn-view-detail {
+        padding: 11px 24px;
+        font-size: 0.8rem;
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    #announcementModal .modal-title {
+        font-size: 0.9rem;
+        padding-right: 35px;
+    }
+
+    #announcementModal .modal-header {
+        padding: 18px 15px;
+    }
+
+    #klhkImageCarousel .carousel-control-prev-icon,
+    #klhkImageCarousel .carousel-control-next-icon {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+/* Medium Devices (Tablets, 768px - 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .announcement-card {
+        padding: 28px 25px;
+    }
+
+    .announcement-logo {
+        width: 75px;
+    }
+
+    .announcement-title {
+        font-size: 1.15rem;
+    }
+
+    .announcement-text {
+        font-size: 0.9rem;
+    }
+
+    .announcement-date {
+        font-size: 0.8rem;
+    }
+
+    .btn-view-detail {
+        padding: 12px 26px;
+        font-size: 0.82rem;
+    }
+
+    #announcementModal .modal-title {
+        font-size: 1rem;
+    }
+
+    #announcementModal .modal-header {
+        padding: 22px 20px;
+    }
+
+    #klhkImageCarousel .carousel-control-prev-icon,
+    #klhkImageCarousel .carousel-control-next-icon {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+/* Large Devices (Desktops, 992px - 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .announcement-card {
+        padding: 30px;
+    }
+
+    .announcement-logo {
+        width: 85px;
+    }
+
+    .announcement-title {
+        font-size: 1.25rem;
+    }
+
+    .announcement-text {
+        font-size: 0.93rem;
+    }
+
+    .btn-view-detail {
+        padding: 12px 28px;
+        font-size: 0.84rem;
+    }
+}
+
+/* Extra Large Devices (Large Desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .announcement-card {
+        padding: 30px;
+    }
+
+    .announcement-logo {
+        width: 90px;
+    }
+
+    .announcement-title {
+        font-size: 1.35rem;
+    }
+
+    .announcement-text {
+        font-size: 0.95rem;
+    }
+
+    .btn-view-detail {
+        padding: 12px 28px;
+        font-size: 0.85rem;
+    }
+
+    #announcementModal .modal-title {
+        font-size: 1.1rem;
+    }
+
+    #klhkImageCarousel .carousel-control-prev-icon,
+    #klhkImageCarousel .carousel-control-next-icon {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Landscape Orientation Fix for Mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    .announcement-card {
+        padding: 15px 20px;
+    }
+
+    .announcement-logo {
+        width: 50px;
+    }
+
+    .announcement-title {
+        font-size: 0.9rem;
+    }
+
+    .announcement-text,
+    .announcement-date {
+        font-size: 0.75rem;
+    }
+
+    .btn-view-detail {
+        padding: 8px 16px;
+        font-size: 0.7rem;
+    }
+
+    #announcementModal .modal-header {
+        padding: 12px 15px;
+    }
+
+    #announcementModal .modal-title {
+        font-size: 0.85rem;
+    }
+}
+/* ---------------- END OF ANNOUNCEMENT STYLES ----------------- */
