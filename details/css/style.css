@@ -40,3 +40,45 @@
 .btn-custom-green:hover {
     background-color: #1b702f; 
 }
+
+/* ABOUT US CAROUSEL – PORTRAIT MODE */
+.aboutus-carousel .carousel-inner {
+    border-radius: 26px;
+    overflow: hidden;
+}
+
+/* FRAME UTAMA – dibuat portrait */
+.aboutus-carousel .carousel-item {
+    aspect-ratio: 2 / 3;
+    background: #f2f6f8;
+}
+
+/* Gambar wajib mengisi frame */
+.aboutus-carousel .carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+}
+
+/* MOBILE */
+@media (max-width: 575.98px) {
+    .aboutus-carousel .carousel-item {
+        aspect-ratio: 3 / 4;
+    }
+}
+
+/* TABLET */
+@media (min-width: 576px) and (max-width: 991.98px) {
+    .aboutus-carousel .carousel-item {
+        aspect-ratio: 2 / 3;
+    }
+}
+
+/* DESKTOP */
+@media (min-width: 992px) {
+    .aboutus-carousel .carousel-item {
+        aspect-ratio: 2 / 3;
+    }
+}
