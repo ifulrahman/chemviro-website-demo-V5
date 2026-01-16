@@ -26,6 +26,15 @@
 </head>
 
 <body>
+    <!-- Promo Popup Start -->
+    <div class="promo-popup-overlay" id="promoPopup">
+        <div class="promo-popup-content">
+            <button class="promo-popup-close" id="closePromoPopup" aria-label="Close">&times;</button>
+            <img src="img/promo-popup/leaflate-promo.png" alt="Promo Special" class="promo-popup-image">
+        </div>
+    </div>
+    <!-- Promo Popup End -->
+
     <!-- Topbar Start -->
     <div class="container-fluid">
         <div class="row align-items-center bg-light py-3 px-xl-5">
@@ -1015,92 +1024,6 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
-    
-    <!-- Custom JavaScript for Announcement Modal -->
-    <script>
-        function openAnnouncementModal() {
-            $('#announcementModal').modal('show');
-        }
-        
-        document.querySelector(".card-img-top").addEventListener("mouseover", function() {
-            this.style.transform = "scale(1.03)";
-        });
-        document.querySelector(".card-img-top").addEventListener("mouseout", function() {
-            this.style.transform = "scale(1)";
-        });
-    </script>
-
-    <script>
-        function lockCarouselToTallestItem(carouselId) {
-            const carousel = document.getElementById(carouselId);
-            if (!carousel) return;
-
-            const inner = carousel.querySelector('.carousel-inner');
-            const items = [...carousel.querySelectorAll('.carousel-item')];
-            if (!inner || items.length === 0) return;
-
-            let maxH = 0;
-
-            items.forEach(item => {
-            const prev = {
-                display: item.style.display,
-                position: item.style.position,
-                visibility: item.style.visibility
-            };
-
-            item.style.display = 'block';
-            item.style.position = 'absolute';
-            item.style.visibility = 'hidden';
-
-            const h = item.offsetHeight;
-            if (h > maxH) maxH = h;
-
-            item.style.display = prev.display;
-            item.style.position = prev.position;
-            item.style.visibility = prev.visibility;
-            });
-
-            // Kunci tinggi berdasarkan yang paling tinggi
-            inner.style.minHeight = maxH + 'px';
-
-            items.forEach(item => {
-            item.style.minHeight = maxH + 'px';
-            });
-        }
-
-        window.addEventListener('load', () => {
-            lockCarouselToTallestItem('certificateCarousel');
-        });
-
-        // Re-lock saat layar berubah
-        window.addEventListener('resize', () => {
-            lockCarouselToTallestItem('certificateCarousel');
-        });
-
-        // Re-lock juga setelah slide selesai animasi (buat jaga-jaga)
-        $('#certificateCarousel').on('slid.bs.carousel', function () {
-            lockCarouselToTallestItem('certificateCarousel');
-        });
-    </script>
-
-    <script>
-        // Klik gambar -> buka modal -> tampilkan gambar full
-        document.addEventListener('click', function (e) {
-            const img = e.target.closest('.certificate-img');
-            if (!img) return;
-
-            const fullSrc = img.getAttribute('data-full') || img.getAttribute('src');
-            const modalImg = document.getElementById('certificateModalImg');
-            if (modalImg) modalImg.src = fullSrc;
-        });
-
-        // Optional: bersihin src pas modal ditutup (biar ga “nyangkut”)
-        if (window.jQuery) {
-            $('#certificateModal').on('hidden.bs.modal', function () {
-            $('#certificateModalImg').attr('src', '');
-            });
-        }
-    </script>
 
 </body>
 
