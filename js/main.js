@@ -189,59 +189,132 @@ if (window.jQuery) {
 // ======================================================================
 
 (function () {
-  const popup = document.getElementById("promoPopup");
-  const closeBtn = document.getElementById("closePromoPopup");
-  const STORAGE_KEY = "chemviro_promo_shown";
+  // Configuration
+  const STORAGE_KEY = "chemviro_all_popups_shown";
+  const popupConfigs = [
+    {
+      id: "newPopup",
+      closeButtonId: "closeNewPopup"
+    },
+    {
+      id: "promoPopup", 
+      closeButtonId: "closePromoPopup"
+    }
+  ];
 
-  // Function to show popup
-  function showPopup() {
-    popup.classList.add("active");
-    // Scroll tetap bisa digunakan - tidak ada overflow hidden
+  let currentPopupIndex = 0;
+
+  // Function to show specific popup
+  function showPopup(index) {
+    if (index >= popupConfigs.length) return;
+    
+    const config = popupConfigs[index];
+    const popup = document.getElementById(config.id);
+    if (popup) {
+      popup.classList.add("active");
+    }
   }
 
-  // Function to hide popup
-  function hidePopup() {
-    popup.classList.remove("active");
-    // Scroll tetap normal - tidak perlu restore
-    sessionStorage.setItem(STORAGE_KEY, "true");
+  // Function to hide current popup and show next
+  function closeCurrentAndShowNext() {
+    const currentConfig = popupConfigs[currentPopupIndex];
+    const currentPopup = document.getElementById(currentConfig.id);
+    
+    if (currentPopup) {
+      currentPopup.classList.remove("active");
+    }
+
+    currentPopupIndex++;
+
+    // If there are more popups, show the next one after a short delay
+    if (currentPopupIndex < popupConfigs.length) {
+      setTimeout(() => {
+        showPopup(currentPopupIndex);
+      }, 300); // 300ms delay for smooth transition
+    } else {
+      // All popups shown, set session flag
+      sessionStorage.setItem(STORAGE_KEY, "true");
+    }
   }
 
-  // Check if popup should be shown
-  function shouldShowPopup() {
-    // Check if this is the homepage (you can adjust this condition)
+  // Check if popups should be shown
+  function shouldShowPopups() {
+    // Check if this is the homepage
     const isHomepage =
       window.location.pathname === "/" ||
       window.location.pathname === "/index.html" ||
-      window.location.pathname.endsWith("/");
+      window.location.pathname.endsWith("/") ||
+      window.location.pathname === "";
 
-    // Check if popup was already shown in this session
+    // Check if popups were already shown in this session
     const alreadyShown = sessionStorage.getItem(STORAGE_KEY);
 
     return isHomepage && !alreadyShown;
   }
 
-  // Close popup when clicking close button
-  closeBtn.addEventListener("click", hidePopup);
+  // Set up event listeners for all close buttons
+  function setupEventListeners() {
+    // Set up close button event listeners
+    popupConfigs.forEach((config, index) => {
+      const closeBtn = document.getElementById(config.closeButtonId);
+      const popup = document.getElementById(config.id);
 
-  // Close popup when clicking outside the content
-  popup.addEventListener("click", function (e) {
-    if (e.target === popup) {
-      hidePopup();
-    }
-  });
+      if (closeBtn) {
+        closeBtn.addEventListener("click", closeCurrentAndShowNext);
+      }
 
-  // Close popup with ESC key
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && popup.classList.contains("active")) {
-      hidePopup();
-    }
-  });
+      // Close popup when clicking outside the content
+      if (popup) {
+        popup.addEventListener("click", function (e) {
+          if (e.target === popup) {
+            closeCurrentAndShowNext();
+          }
+        });
+      }
+    });
 
-  // Show popup on page load if conditions are met
-  window.addEventListener("load", function () {
-    if (shouldShowPopup()) {
-      // Delay popup appearance for better UX (1.5 seconds after page load)
-      setTimeout(showPopup, 1500);
+    // Close current popup with ESC key
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") {
+        // Check if any popup is currently active
+        const activePopup = popupConfigs.find(config => {
+          const popup = document.getElementById(config.id);
+          return popup && popup.classList.contains("active");
+        });
+
+        if (activePopup) {
+          closeCurrentAndShowNext();
+        }
+      }
+    });
+  }
+
+  // Initialize sequential popups
+  function initSequentialPopups() {
+    if (!shouldShowPopups()) return;
+
+    // Set up all event listeners first
+    setupEventListeners();
+
+    // Show first popup after a delay for better UX
+    setTimeout(() => {
+      showPopup(0);
+    }, 1500); // 1.5 seconds after page load
+  }
+
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSequentialPopups);
+  } else {
+    // DOM already loaded
+    initSequentialPopups();
+  }
+
+  // Also initialize on window load as backup
+  window.addEventListener("load", function() {
+    // Only run if not already initialized
+    if (currentPopupIndex === 0 && shouldShowPopups() && !document.querySelector('.promo-popup-overlay.active')) {
+      initSequentialPopups();
     }
   });
 })();
