@@ -9830,109 +9830,281 @@ a.text-dark:hover, a.text-dark:focus {
   transform: translateZ(0);
 }
 
-/* ---------------- WhatsApp Floating Button (Pojok Kanan Bawah Popup) ------------------- */
-.whatsapp-float {
+/* ---------------- WhatsApp Multi-Contact Floating Button ---------------- */
+/* Container utama */
+.wa-float-wrapper {
     position: fixed;
-    width: 60px;
-    height: 60px;
-    bottom: 110px;
-    right: 20px;
-    background-color: #25d366;
-    color: #FFF;
-    border-radius: 50px;
-    text-align: center;
-    font-size: 30px;
-    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
-    z-index: 1000;
+    bottom: 100px;
+    right: 24px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+/* Popup panel */
+.wa-popup {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18), 0 2px 8px rgba(37, 211, 102, 0.10);
+    width: 280px;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(16px) scale(0.97);
+    transform-origin: bottom right;
+    transition: all 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+    pointer-events: none;
+}
+
+.wa-popup.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+    pointer-events: all;
+}
+
+/* Header popup */
+.wa-popup-header {
+    background: linear-gradient(75deg, #25d366 0%, #128c7e 35%);
+    padding: 16px 18px 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.wa-popup-header-icon {
+    width: 42px;
+    height: 42px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s ease;
-    animation: pulse 2s infinite;
+    font-size: 20px;
+    color: #fff;
+    flex-shrink: 0;
 }
 
-.whatsapp-float:hover {
-    background-color: #128c7e;
-    color: #FFF;
-    transform: scale(1.1);
-    box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.4);
+.wa-popup-header-text h4 {
+    margin: 0;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.2;
 }
 
-.whatsapp-icon {
-    margin-top: 0;
-    line-height: 60px;
+.wa-popup-header-text p {
+    margin: 3px 0 0;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 11.5px;
+    line-height: 1.3;
 }
 
-@keyframes pulse {
-    0% {
-        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
-    }
-    70% {
-        box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-    }
+/* Daftar kontak */
+.wa-contact-list {
+    padding: 10px 0 6px;
 }
 
-/* Responsive Design */
-@media screen and (max-width: 768px) {
-    .whatsapp-float {
-        width: 50px;
-        height: 50px;
-        bottom: 95px;
-        right: 25px;
-        font-size: 25px;
-    }
-    
-    .whatsapp-icon {
-        line-height: 50px;
-    }
+.wa-contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 9px 16px;
+    text-decoration: none;
+    color: #1a1a1a;
+    transition: background 0.15s ease;
+    cursor: pointer;
 }
 
-@media screen and (max-width: 480px) {
-    .whatsapp-float {
-        width: 45px;
-        height: 45px;
-        bottom: 95px;
-        right: 25px;
-        font-size: 22px;
-    }
-    
-    .whatsapp-icon {
-        line-height: 45px;
-    }
+.wa-contact-item:hover {
+    background: #f0fdf4;
 }
 
-/* Tooltip on hover */
-.whatsapp-float::before {
-    content: "Chat dengan kami";
+.wa-contact-item:hover .wa-contact-icon {
+    background: #25d366;
+    color: #fff;
+}
+
+.wa-contact-item + .wa-contact-item {
+    border-top: 1px solid #f3f4f6;
+}
+
+.wa-contact-icon {
+    width: 38px;
+    height: 38px;
+    background: #e8fdf0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    color: #25d366;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.wa-contact-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.wa-contact-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 1px;
+    line-height: 1.3;
+}
+
+.wa-contact-role {
+    font-size: 11px;
+    color: #6b7280;
+    margin: 0;
+    line-height: 1.3;
+}
+
+.wa-contact-arrow {
+    color: #25d366;
+    font-size: 12px;
+    opacity: 0.6;
+    flex-shrink: 0;
+}
+
+/* Tombol bulat utama */
+.wa-main-btn {
+    width: 58px;
+    height: 58px;
+    background: linear-gradient(135deg, #25d366, #128c7e);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    box-shadow: 0 4px 18px rgba(37, 211, 102, 0.45);
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    animation: wa-pulse 2.2s infinite;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.wa-main-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 24px rgba(37, 211, 102, 0.55);
+}
+
+/* Icon WA & close */
+.wa-main-btn .wa-icon-wa {
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.wa-main-btn .wa-icon-close {
+    position: absolute;
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.5);
+    transition: opacity 0.2s, transform 0.2s;
+    font-size: 22px;
+}
+
+/* State: popup terbuka */
+.wa-float-wrapper.open .wa-main-btn .wa-icon-wa {
+    opacity: 0;
+    transform: rotate(90deg) scale(0.5);
+}
+
+.wa-float-wrapper.open .wa-main-btn .wa-icon-close {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+}
+
+.wa-float-wrapper.open .wa-main-btn {
+    animation: none;
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    box-shadow: 0 4px 18px rgba(239, 68, 68, 0.4);
+}
+
+/* Tooltip hover (desktop) */
+.wa-main-btn::before {
+    content: "Hubungi Kami";
     position: absolute;
     right: 70px;
-    background-color: #128c7e;
-    color: white;
-    padding: 8px 15px;
-    border-radius: 5px;
+    background: #1a1a1a;
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 6px;
     white-space: nowrap;
+    font-size: 12.5px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
     opacity: 0;
     visibility: hidden;
-    transition: all 0.3s ease;
-    font-size: 14px;
-    font-family: 'Poppins', sans-serif;
+    transition: all 0.2s ease;
+    pointer-events: none;
 }
 
-.whatsapp-float:hover::before {
+.wa-main-btn::after {
+    content: '';
+    position: absolute;
+    right: 64px;
+    border: 5px solid transparent;
+    border-left-color: #1a1a1a;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+    pointer-events: none;
+}
+
+.wa-main-btn:hover::before,
+.wa-main-btn:hover::after {
     opacity: 1;
     visibility: visible;
-    right: 75px;
+    right: 72px;
 }
 
+/* Animasi pulse */
+@keyframes wa-pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.55); }
+    70%  { box-shadow: 0 0 0 14px rgba(37, 211, 102, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+/* Responsive tablet */
 @media screen and (max-width: 768px) {
-    .whatsapp-float::before {
+    .wa-float-wrapper {
+        bottom: 20px;
+        right: 16px;
+    }
+
+    .wa-main-btn::before,
+    .wa-main-btn::after {
         display: none;
     }
 }
-/* --------------- end of custom CSS for WhatsApp Floating Button ---------------*/
+
+/* Responsive mobile */
+@media screen and (max-width: 480px) {
+    .wa-float-wrapper {
+        bottom: 100px;
+        right: 22px;
+    }
+
+    .wa-popup {
+        width: 256px;
+    }
+
+    .wa-main-btn {
+        width: 52px;
+        height: 52px;
+        font-size: 22px;
+    }
+}
+
+/* ---------------- end of WhatsApp Multi-Contact Floating Button ---------------- */
 
 /* --------------- ANNOUNCEMENT POP-UP SECTION STYLES --------------- */
 .announcement-section {

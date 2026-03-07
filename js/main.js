@@ -317,4 +317,25 @@ if (window.jQuery) {
       initSequentialPopups();
     }
   });
+
+
+  // <!-- Script WhatsApp (Pojok kanan bawah) Multi-Contact -->
+  const wrapper = document.getElementById('waFloatWrapper');
+        const btn     = document.getElementById('waMainBtn');
+        const popup   = document.getElementById('waPopup');
+
+        btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        const isOpen = wrapper.classList.toggle('open');
+        popup.classList.toggle('open', isOpen);
+        });
+
+        // Tutup popup saat klik di luar
+        document.addEventListener('click', function (e) {
+        if (!wrapper.contains(e.target)) {
+            wrapper.classList.remove('open');
+            popup.classList.remove('open');
+        }
+        });
+  // <!-- END Script WhatsApp Multi-Contact -->
 })();
