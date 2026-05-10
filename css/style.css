@@ -10675,8 +10675,8 @@ body.modal-open .modal-backdrop {
 /* ------------------- END Certificate Carousel Styles ----------------- */
 
 
-/* -------------- Promo Popup Styles -------------------- */
-        .promo-popup-overlay {
+/* -------------- Popup Home Styles -------------------- */
+        .popup-home-overlay {
             display: none;
             position: fixed;
             top: 0;
@@ -10688,13 +10688,13 @@ body.modal-open .modal-backdrop {
             animation: fadeIn 0.3s ease-in;
         }
 
-        .promo-popup-overlay.active {
+        .popup-home-overlay.active {
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        .promo-popup-content {
+        .popup-home-content {
             position: relative;
             max-width: 90%;
             max-height: 90vh;
@@ -10705,7 +10705,7 @@ body.modal-open .modal-backdrop {
             animation: slideUp 0.4s ease-out;
         }
 
-        .promo-popup-image {
+        .popup-home-image {
             width: 100%;
             height: auto;
             display: block;
@@ -10713,7 +10713,7 @@ body.modal-open .modal-backdrop {
             object-fit: contain;
         }
 
-        .promo-popup-close {
+        .popup-home-close {
             position: absolute;
             top: 15px;
             right: 15px;
@@ -10733,19 +10733,15 @@ body.modal-open .modal-backdrop {
             z-index: 10000;
         }
 
-        .promo-popup-close:hover {
+        .popup-home-close:hover {
             background-color: #fff;
             transform: rotate(90deg);
             color: #d00;
         }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         @keyframes slideUp {
@@ -10761,12 +10757,12 @@ body.modal-open .modal-backdrop {
 
         /* Responsive adjustments */
         @media (max-width: 768px) {
-            .promo-popup-content {
+            .popup-home-content {
                 max-width: 95%;
                 max-height: 80vh;
             }
 
-            .promo-popup-close {
+            .popup-home-close {
                 width: 35px;
                 height: 35px;
                 font-size: 20px;
