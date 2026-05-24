@@ -247,58 +247,62 @@ if (window.jQuery) {
         font-family: 'Poppins', sans-serif;
       ">
         <!-- Header -->
-        <div style="background: linear-gradient(135deg, #0d9488, #059669); padding: 22px 24px 18px; position: relative;">
+        <div style="background: linear-gradient(135deg, #047857, #059669); padding: 22px 24px 18px; position: relative;">
           <button id="closeIsoPopup" style="
             position: absolute; top: 14px; right: 16px;
-            background: rgba(255,255,255,0.2); border: none; border-radius: 50%;
+            background: rgba(255,255,255,0.15); border: none; border-radius: 50%;
             width: 30px; height: 30px; font-size: 18px; font-weight: bold;
             color: white; cursor: pointer; display: flex; align-items: center; justify-content: center;
             transition: background 0.2s;
           ">&times;</button>
           <div style="display: flex; align-items: center; gap: 12px;">
-            <div style="background: rgba(255,255,255,0.2); border-radius: 50%; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; font-size: 22px;">🏆</div>
+            <div style="background: rgba(255,255,255,0.15); border-radius: 50%; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; font-size: 22px;">🏆</div>
             <div>
-              <p style="margin:0; color: rgba(255,255,255,0.8); font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px;">Pengumuman Resmi</p>
-              <h4 style="margin:0; color: white; font-size: 15px; font-weight: 700; line-height: 1.3;">Sertifikasi Internasional Baru!</h4>
+              <p style="margin:0; color: rgba(255,255,255,0.75); font-size: 10px; text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600;">Pengumuman Resmi</p>
+              <h4 style="margin:4px 0 0; color: white; font-size: 16px; font-weight: 700; line-height: 1.3;">Sertifikasi Internasional Baru!</h4>
             </div>
           </div>
         </div>
 
         <!-- Body -->
-        <div style="padding: 20px 24px;">
+        <div style="padding: 20px 24px 24px;">
           <p style="font-size: 13px; color: #374151; margin-bottom: 14px; line-height: 1.6;">
-            PT Chemviro Buana Indonesia dengan bangga mengumumkan telah memperoleh <strong>4 Sertifikasi Internasional</strong> baru dari <strong>Globus Certifications Private Limited</strong>:
+            PT Chemviro Buana Indonesia dengan bangga mengumumkan telah memperoleh <strong>4 Sertifikasi Internasional</strong> baru dari <strong>Globus Certifications Private Limited</strong> dan <strong>QVR (Quality Verification Registrar)</strong>:
           </p>
 
-          <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 18px;">
-            <div style="display: flex; align-items: flex-start; gap: 10px; background: #f0fdf4; border-radius: 8px; padding: 10px 12px; border-left: 3px solid #059669;">
-              <span style="font-size: 18px;">✅</span>
-              <div>
-                <p style="margin:0; font-size: 12.5px; font-weight: 700; color: #065f46;">ISO 9001:2015</p>
-                <p style="margin:0; font-size: 11px; color: #6b7280;">Quality Management System</p>
-              </div>
+          <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px;">
+
+              <div style="display: flex; align-items: center; gap: 12px; background: #f0fdf4; border-radius: 8px; padding: 10px 14px; border-left: 3px solid #059669;">
+            <img src="img/home-logo/1713.jpeg" alt="ISO 9001" style="width: 40px; height: 40px; object-fit: contain; border-radius: 4px; background: white; padding: 2px; flex-shrink: 0;">
+            <div>
+              <p style="margin:0; font-size: 13px; font-weight: 700; color: #065f46;">ISO 9001:2015</p>
+              <p style="margin:0; font-size: 11px; color: #6b7280;">Quality Management System</p>
             </div>
-            <div style="display: flex; align-items: flex-start; gap: 10px; background: #f0fdf4; border-radius: 8px; padding: 10px 12px; border-left: 3px solid #059669;">
-              <span style="font-size: 18px;">✅</span>
-              <div>
-                <p style="margin:0; font-size: 12.5px; font-weight: 700; color: #065f46;">ISO 14001:2015</p>
-                <p style="margin:0; font-size: 11px; color: #6b7280;">Environmental Management System</p>
-              </div>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 12px; background: #f0fdf4; border-radius: 8px; padding: 10px 14px; border-left: 3px solid #059669;">
+            <img src="img/home-logo/1712.jpeg" alt="ISO 14001" style="width: 40px; height: 40px; object-fit: contain; border-radius: 4px; background: white; padding: 2px; flex-shrink: 0;">
+            <div>
+              <p style="margin:0; font-size: 13px; font-weight: 700; color: #065f46;">ISO 14001:2015</p>
+              <p style="margin:0; font-size: 11px; color: #6b7280;">Environmental Management System</p>
             </div>
-            <div style="display: flex; align-items: flex-start; gap: 10px; background: #f0fdf4; border-radius: 8px; padding: 10px 12px; border-left: 3px solid #059669;">
-              <span style="font-size: 18px;">✅</span>
-              <div>
-                <p style="margin:0; font-size: 12.5px; font-weight: 700; color: #065f46;">ISO 45001:2018</p>
-                <p style="margin:0; font-size: 11px; color: #6b7280;">Occupational Health &amp; Safety Management System</p>
-              </div>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 12px; background: #f0fdf4; border-radius: 8px; padding: 10px 14px; border-left: 3px solid #059669;">
+            <img src="img/home-logo/1720.jpeg" alt="ISO 45001" style="width: 40px; height: 40px; object-fit: contain; border-radius: 4px; background: white; padding: 2px; flex-shrink: 0;">
+            <div>
+              <p style="margin:0; font-size: 13px; font-weight: 700; color: #065f46;">ISO 45001:2018</p>
+              <p style="margin:0; font-size: 11px; color: #6b7280;">Occupational Health &amp; Safety Management System</p>
             </div>
-            <div style="display: flex; align-items: flex-start; gap: 10px; background: #f0fdf4; border-radius: 8px; padding: 10px 12px; border-left: 3px solid #059669;">
-              <span style="font-size: 18px;">✅</span>
-              <div>
-                <p style="margin:0; font-size: 12.5px; font-weight: 700; color: #065f46;">ISO 37001:2025</p>
-                <p style="margin:0; font-size: 11px; color: #6b7280;">Anti-Bribery Management System</p>
-              </div>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 12px; background: #f0fdf4; border-radius: 8px; padding: 10px 14px; border-left: 3px solid #059669;">
+            <img src="img/home-logo/37001.jpeg" alt="ISO 37001" style="width: 40px; height: 40px; object-fit: contain; border-radius: 4px; background: white; padding: 2px; flex-shrink: 0;">
+            <div>
+              <p style="margin:0; font-size: 13px; font-weight: 700; color: #065f46;">ISO 37001:2016</p>
+              <p style="margin:0; font-size: 11px; color: #6b7280;">Anti-Bribery Management System</p>
             </div>
+          </div>
           </div>
 
           <button id="closeIsoPopupBtn" style="
