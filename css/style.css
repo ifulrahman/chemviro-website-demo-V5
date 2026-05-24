@@ -9841,6 +9841,12 @@ a.text-dark:hover, a.text-dark:focus {
     flex-direction: column;
     align-items: flex-end;
     gap: 10px;
+    pointer-events: none;
+}
+
+.wa-float-wrapper .wa-main-btn,
+.wa-float-wrapper .wa-popup.open {
+    pointer-events: all;
 }
 
 /* Popup panel */
@@ -10780,22 +10786,4 @@ body.modal-open .modal-backdrop {
     .logo-zoomable:hover {
         transform: scale(1.08);
         box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-    }
-
-    /* Mengatasi bug WA FAB yang mengakibatkan elemen lain tidak bisa diklik saat popup terbuka */ */
-    .wa-float-wrapper {
-        position: fixed;
-        bottom: 100px;
-        right: 24px;
-        z-index: 9999;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        gap: 10px;
-        pointer-events: none;
-    }
-
-    .wa-float-wrapper .wa-main-btn,
-    .wa-float-wrapper .wa-popup.open {
-        pointer-events: all;
     }
