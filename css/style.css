@@ -10770,3 +10770,32 @@ body.modal-open .modal-backdrop {
                 right: 10px;
             }
         }
+
+    /* Logo Zoomable Hover Effect (LOGO ISO BARU BISA DIKLIK)*/
+    .logo-zoomable {
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        border-radius: 6px;
+    }
+
+    .logo-zoomable:hover {
+        transform: scale(1.08);
+        box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    }
+
+    /* Mengatasi bug WA FAB yang mengakibatkan elemen lain tidak bisa diklik saat popup terbuka */ */
+    .wa-float-wrapper {
+        position: fixed;
+        bottom: 100px;
+        right: 24px;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 10px;
+        pointer-events: none;
+    }
+
+    .wa-float-wrapper .wa-main-btn,
+    .wa-float-wrapper .wa-popup.open {
+        pointer-events: all;
+    }

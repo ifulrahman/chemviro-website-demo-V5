@@ -190,6 +190,7 @@ if (window.jQuery) {
 
 (function () {
   const STORAGE_KEY = "chemviro_audit_cems_popup_shown";
+  const STORAGE_KEY_2 = "chemviro_iso_popup_shown";
 
   function shouldShowPopup() {
     // Check if this is the homepage
@@ -205,6 +206,143 @@ if (window.jQuery) {
     return isHomepage && !alreadyShown;
   }
 
+  function shouldShowPopup2() {
+    const isHomepage =
+      window.location.pathname === "/" ||
+      window.location.pathname === "/index.html" ||
+      window.location.pathname.endsWith("/") ||
+      window.location.pathname === "";
+    const alreadyShown2 = sessionStorage.getItem(STORAGE_KEY_2);
+    return isHomepage && !alreadyShown2;
+  }
+
+  function showPopup2() {
+    if (!shouldShowPopup2()) return;
+
+    // Buat elemen popup kedua secara dinamis
+    const overlay = document.createElement('div');
+    overlay.id = 'isoPopupOverlay';
+    overlay.style.cssText = `
+      display: flex;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.75);
+      z-index: 10001;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.3s ease-in;
+    `;
+
+    overlay.innerHTML = `
+      <div style="
+        position: relative;
+        background: white;
+        border-radius: 14px;
+        max-width: 480px;
+        width: 90%;
+        overflow: hidden;
+        box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+        animation: slideUp 0.4s ease-out;
+        font-family: 'Poppins', sans-serif;
+      ">
+        <!-- Header -->
+        <div style="background: linear-gradient(135deg, #0d9488, #059669); padding: 22px 24px 18px; position: relative;">
+          <button id="closeIsoPopup" style="
+            position: absolute; top: 14px; right: 16px;
+            background: rgba(255,255,255,0.2); border: none; border-radius: 50%;
+            width: 30px; height: 30px; font-size: 18px; font-weight: bold;
+            color: white; cursor: pointer; display: flex; align-items: center; justify-content: center;
+            transition: background 0.2s;
+          ">&times;</button>
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <div style="background: rgba(255,255,255,0.2); border-radius: 50%; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; font-size: 22px;">🏆</div>
+            <div>
+              <p style="margin:0; color: rgba(255,255,255,0.8); font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px;">Pengumuman Resmi</p>
+              <h4 style="margin:0; color: white; font-size: 15px; font-weight: 700; line-height: 1.3;">Sertifikasi Internasional Baru!</h4>
+            </div>
+          </div>
+        </div>
+
+        <!-- Body -->
+        <div style="padding: 20px 24px;">
+          <p style="font-size: 13px; color: #374151; margin-bottom: 14px; line-height: 1.6;">
+            PT Chemviro Buana Indonesia dengan bangga mengumumkan telah memperoleh <strong>4 Sertifikasi Internasional</strong> baru dari <strong>Globus Certifications Private Limited</strong>:
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 18px;">
+            <div style="display: flex; align-items: flex-start; gap: 10px; background: #f0fdf4; border-radius: 8px; padding: 10px 12px; border-left: 3px solid #059669;">
+              <span style="font-size: 18px;">✅</span>
+              <div>
+                <p style="margin:0; font-size: 12.5px; font-weight: 700; color: #065f46;">ISO 9001:2015</p>
+                <p style="margin:0; font-size: 11px; color: #6b7280;">Quality Management System</p>
+              </div>
+            </div>
+            <div style="display: flex; align-items: flex-start; gap: 10px; background: #f0fdf4; border-radius: 8px; padding: 10px 12px; border-left: 3px solid #059669;">
+              <span style="font-size: 18px;">✅</span>
+              <div>
+                <p style="margin:0; font-size: 12.5px; font-weight: 700; color: #065f46;">ISO 14001:2015</p>
+                <p style="margin:0; font-size: 11px; color: #6b7280;">Environmental Management System</p>
+              </div>
+            </div>
+            <div style="display: flex; align-items: flex-start; gap: 10px; background: #f0fdf4; border-radius: 8px; padding: 10px 12px; border-left: 3px solid #059669;">
+              <span style="font-size: 18px;">✅</span>
+              <div>
+                <p style="margin:0; font-size: 12.5px; font-weight: 700; color: #065f46;">ISO 45001:2018</p>
+                <p style="margin:0; font-size: 11px; color: #6b7280;">Occupational Health &amp; Safety Management System</p>
+              </div>
+            </div>
+            <div style="display: flex; align-items: flex-start; gap: 10px; background: #f0fdf4; border-radius: 8px; padding: 10px 12px; border-left: 3px solid #059669;">
+              <span style="font-size: 18px;">✅</span>
+              <div>
+                <p style="margin:0; font-size: 12.5px; font-weight: 700; color: #065f46;">ISO 37001:2025</p>
+                <p style="margin:0; font-size: 11px; color: #6b7280;">Anti-Bribery Management System</p>
+              </div>
+            </div>
+          </div>
+
+          <button id="closeIsoPopupBtn" style="
+            width: 100%;
+            background: #059669;
+            color: white;
+            border: 2px solid #059669;
+            border-radius: 25px;
+            padding: 12px 28px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+          "
+          onmouseover="this.style.background='white';this.style.color='#059669';this.style.transform='scale(1.05)';this.style.boxShadow='0 6px 20px rgba(0,0,0,0.2)';"
+          onmouseout="this.style.background='#059669';this.style.color='white';this.style.transform='scale(1)';this.style.boxShadow='0 4px 15px rgba(0,0,0,0.15)';"
+          >Tutup</button>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(overlay);
+    sessionStorage.setItem(STORAGE_KEY_2, 'true');
+
+    function closePopup2() {
+      overlay.style.opacity = '0';
+      overlay.style.transition = 'opacity 0.3s ease';
+      setTimeout(() => overlay.remove(), 300);
+    }
+
+    document.getElementById('closeIsoPopup').addEventListener('click', closePopup2);
+    document.getElementById('closeIsoPopupBtn').addEventListener('click', closePopup2);
+    overlay.addEventListener('click', function(e) {
+      if (e.target === overlay) closePopup2();
+    });
+    document.addEventListener('keydown', function handler(e) {
+      if (e.key === 'Escape') { closePopup2(); document.removeEventListener('keydown', handler); }
+    });
+  }
+
   function initPopup() {
     if (!shouldShowPopup()) return;
 
@@ -214,6 +352,8 @@ if (window.jQuery) {
     function closePopup() {
       if (popup) popup.classList.remove("active");
       sessionStorage.setItem(STORAGE_KEY, "true");
+      // Setelah popup pertama ditutup, tampilkan popup kedua
+      setTimeout(showPopup2, 400);
     }
 
     // Show popup after a delay for better UX
@@ -248,22 +388,46 @@ if (window.jQuery) {
 
 
   // <!-- Script WhatsApp (Pojok kanan bawah) Multi-Contact -->
-  const wrapper = document.getElementById('waFloatWrapper');
-        const btn     = document.getElementById('waMainBtn');
-        const popup   = document.getElementById('waPopup');
+    const wrapper = document.getElementById('waFloatWrapper');
+    const btn     = document.getElementById('waMainBtn');
+    const popup   = document.getElementById('waPopup');
 
-        btn.addEventListener('click', function (e) {
-        e.stopPropagation();
-        const isOpen = wrapper.classList.toggle('open');
-        popup.classList.toggle('open', isOpen);
-        });
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      const isOpen = wrapper.classList.toggle('open');
+      popup.classList.toggle('open', isOpen);
+    });
 
-        // Tutup popup saat klik di luar
-        document.addEventListener('click', function (e) {
-        if (!wrapper.contains(e.target)) {
-            wrapper.classList.remove('open');
-            popup.classList.remove('open');
-        }
-        });
-  // <!-- END Script WhatsApp Multi-Contact -->
+    document.addEventListener('click', function (e) {
+      if (!wrapper.contains(e.target)) {
+        wrapper.classList.remove('open');
+        popup.classList.remove('open');
+      }
+    });
+    // Logo Zoom
+    const logoModal = document.getElementById('logoZoomModal');
+    const logoZoomImg = document.getElementById('logoZoomImg');
+    const closeLogoZoom = document.getElementById('closeLogoZoom');
+
+    document.querySelectorAll('.logo-zoomable').forEach(function(img) {
+      img.addEventListener('click', function() {
+        logoZoomImg.src = this.src;
+        logoZoomImg.alt = this.alt;
+        logoModal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    function closeLogo() {
+      logoModal.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+
+    if (closeLogoZoom) closeLogoZoom.addEventListener('click', closeLogo);
+    if (logoModal) logoModal.addEventListener('click', function(e) {
+      if (e.target === logoModal) closeLogo();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && logoModal && logoModal.style.display === 'flex') closeLogo();
+    });
 })();
