@@ -189,16 +189,27 @@ if (window.jQuery) {
 // ======================================================================
 
 (function () {
+  const STORAGE_KEY_0 = "chemviro_tmat_popup_shown";
   const STORAGE_KEY = "chemviro_audit_cems_popup_shown";
   const STORAGE_KEY_2 = "chemviro_iso_popup_shown";
 
-  function shouldShowPopup() {
-    // Check if this is the homepage
-    const isHomepage =
+  function isHomepagePath() {
+    return (
       window.location.pathname === "/" ||
       window.location.pathname === "/index.html" ||
       window.location.pathname.endsWith("/") ||
-      window.location.pathname === "";
+      window.location.pathname === ""
+    );
+  }
+
+  function shouldShowPopup0() {
+    const alreadyShown0 = sessionStorage.getItem(STORAGE_KEY_0);
+    return isHomepagePath() && !alreadyShown0;
+  }
+
+  function shouldShowPopup() {
+    // Check if this is the homepage
+    const isHomepage = isHomepagePath();
 
     // Check if popup was already shown in this session
     const alreadyShown = sessionStorage.getItem(STORAGE_KEY);
@@ -347,8 +358,12 @@ if (window.jQuery) {
     });
   }
 
-  function initPopup() {
-    if (!shouldShowPopup()) return;
+  function initPopupAuditCems() {
+    if (!shouldShowPopup()) {
+      // Jika popup audit CEMS sudah pernah tampil, lanjut ke popup ISO
+      setTimeout(showPopup2, 80);
+      return;
+    }
 
     const popup = document.getElementById("auditCemsPopup");
     const closeBtn = document.getElementById("closeAuditCemsPopup");
@@ -356,14 +371,51 @@ if (window.jQuery) {
     function closePopup() {
       if (popup) popup.classList.remove("active");
       sessionStorage.setItem(STORAGE_KEY, "true");
-      // Setelah popup pertama ditutup, tampilkan popup kedua
-      setTimeout(showPopup2, 400);
+      // Setelah popup audit CEMS ditutup, tampilkan popup ISO
+      setTimeout(showPopup2, 80);
     }
 
-    // Show popup after a delay for better UX
     setTimeout(() => {
       if (popup) popup.classList.add("active");
-    }, 1500); // 1.5 seconds after page load
+    }, 80);
+
+    if (closeBtn) closeBtn.addEventListener("click", closePopup);
+
+    // Close popup when clicking outside the content
+    if (popup) {
+      popup.addEventListener("click", function (e) {
+        if (e.target === popup) closePopup();
+      });
+    }
+
+    // Close popup with ESC key
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && popup && popup.classList.contains("active")) {
+        closePopup();
+      }
+    });
+  }
+
+  function initPopup() {
+    if (!shouldShowPopup0()) {
+      // Jika popup TMAT sudah pernah tampil, lanjut ke popup audit CEMS
+      initPopupAuditCems();
+      return;
+    }
+
+    const popup = document.getElementById("tmatPopup");
+    const closeBtn = document.getElementById("closeTmatPopup");
+
+    function closePopup() {
+      if (popup) popup.classList.remove("active");
+      sessionStorage.setItem(STORAGE_KEY_0, "true");
+      // Setelah popup TMAT ditutup, tampilkan popup audit CEMS
+      setTimeout(initPopupAuditCems, 80);
+    }
+
+    setTimeout(() => {
+      if (popup) popup.classList.add("active");
+    }, 80);
 
     if (closeBtn) closeBtn.addEventListener("click", closePopup);
 
